@@ -26,9 +26,10 @@ const HomePage: NextPage<HomePageProps> = ({ users }) => {
     () =>
       users?.filter(
         ({ firstName, lastName }: User) =>
-          includesString(firstName, input) || includesString(lastName, input)
+          includesString(firstName, debouncedInput) ||
+          includesString(lastName, debouncedInput)
       ) || [],
-    [users, debouncedInput]
+    [debouncedInput]
   );
 
   const {
